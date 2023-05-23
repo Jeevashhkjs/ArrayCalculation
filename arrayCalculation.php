@@ -1,12 +1,44 @@
 <?php
 
 $array = [
-    [12, -1, 1, 1, -1], // => 2
-    [12, -1, 66, 4, 0], // => 70
-    [12, 0, 66, 76, -1], // => 0
-    [-1, 1, 2, 3, 4], // => 10
-    [56, -1, 66, -1, 67], // => 66
+    [23, -1, 10, 98, -1], 
+    [-1, 1, 2, 3, 4], 
+    [12, 0, 66, 76, -1],
+    [56, -1, 66, -1, 67], 
+    [99, -1, 99, 99, -1]
 ];
+
+// using Flag methods
+
+$ouputArray = [];
+$flag = false;
+$sumCount = 0;
+for($j=0;$j<count($array);$j++){
+    for($i=0;$i<count($array[$j]);$i++){
+        if($flag){
+            if($array[$j][$i] == -1){
+                $flag = false;
+            }
+            else{
+                $sumCount += $array[$j][$i];
+            }
+        }
+        else{
+            if($array[$j][$i] == -1){
+                $flag = true;
+            }
+        }
+    }
+    $ouputArray[] = $sumCount;
+}
+print_r("The index with maximum sum is ". (array_keys($ouputArray, max($ouputArray))[0]));
+echo "\n";
+print_r($ouputArray);
+
+
+//Using Recursion method
+
+/*
 
 $outputArray = [];
 
@@ -49,14 +81,20 @@ function findBiggestNumber($array){
 
 }
 findBiggestNumber($array[$count]);
+$revArray = array_reverse($outputArray);
 
 $BiggestNumber = 0;
-
-for($js=0;$js<count($outputArray);$js++){
-    if($outputArray[$js] > $BiggestNumber){
-        $BiggestNumber = $outputArray[$js];
+$getIndex = 0;
+for($js=0;$js<count($revArray);$js++){
+    if($revArray[$js] > $BiggestNumber){
+        $BiggestNumber = $revArray[$js];
+        $getIndex = ($js % 10);
     }
 }
 
-echo $BiggestNumber;
+echo "The index with maximum sum is ".$getIndex."\n";
+print_r($revArray);
+
+*/
+
 
