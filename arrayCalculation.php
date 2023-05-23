@@ -96,5 +96,4 @@ echo "The index with maximum sum is ".$getIndex."\n";
 print_r($revArray);
 
 */
-
-
+  
